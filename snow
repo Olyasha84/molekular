@@ -1,0 +1,30 @@
+def calculate_snow_molecules(weight_kg, snow_density=0.1):
+    """
+    Функция для расчета количества молекул воды в снеге.
+    
+    :param weight_kg: вес снега в килограммах
+    :param snow_density: плотность снега в граммах на кубический сантиметр (г/см^3), 0.1 по умолчанию.
+    :return: количество молекул воды в снеге
+    """
+    # Константы
+    water_molecule_mass_g_per_mol = 18  # Молекулярная масса воды, г/моль
+    avogadro_number = 6.022e23  # Число Авогадро, молекул/моль
+    
+    # Перевод веса снега в граммы
+    weight_g = weight_kg * 1000
+    
+    # Объем снега в кубических сантиметрах (исходя из предположения, что 1 г = 1 см^3 для воды)
+    volume_cm3 = weight_g / snow_density
+    
+    # Масса воды в снеге в граммах (исходя из предположения, что снег полностью состоит из воды)
+    water_mass_g = volume_cm3  # Так как предположение, что 1 см^3 = 1 г для воды
+    
+    # Количество молекул воды в снеге
+    number_of_molecules = (water_mass_g / water_molecule_mass_g_per_mol) * avogadro_number
+    
+    return number_of_molecules
+
+# Пример использования
+weight_kg = 1  # 1 кг снега
+number_of_molecules = calculate_snow_molecules(weight_kg)
+print(f"Количество молекул в {weight_kg} кг снега: {number_of_molecules:.2e}")
